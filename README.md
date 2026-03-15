@@ -285,7 +285,7 @@ If the declared income is a significant outlier, the system flags it and prompts
 
 ## 10. Development Plan
 
-### Phase 1 (Weeks 1–2): Ideation & Foundation ✅ *Current*
+### Phase 1 (Weeks 1–2): Ideation & Foundation
 - [x] Persona research and scenario definition
 - [x] Premium model design and trigger specification
 - [x] Tech stack finalization
@@ -315,13 +315,13 @@ If the declared income is a significant outlier, the system flags it and prompts
 
 ## 11. Team
 
-| Name | Role |
-|------|------|
-| *(Team Member 1)* | Backend / AI-ML |
-| *(Team Member 2)* | Frontend / React |
-| *(Team Member 3)* | Mobile / Flutter |
-| *(Team Member 4)* | Full-stack / DevOps |
-| *(Team Member 5)* | Product / UI-UX |
+|         Name         |                           |     Role    |
+|------------------|                               |-------------|
+| *(Twinkle Das)* |                                |Backend / AI-ML |
+| *(Darshan Lathi)* |                              |Frontend / React |
+| *(ShuchiShubhra Sahu)* |                         |Mobile / Flutter |
+| *(Smita Samal)* |                                |Full-stack / DevOps|
+| *(SoumyaRanjan Sethi)* |                         |Product / UI-UX |
 
 ---
 
