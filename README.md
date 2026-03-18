@@ -7,7 +7,6 @@ A coordinated syndicate of 500 delivery workers used GPS-spoofing apps to drain 
 1. 🔍 The Differentiation — Genuine Stranded Worker vs. Bad Actor
 Our AI/ML pipeline does not trust a single signal. It builds a multi-dimensional trust score for every claim, in real time.
 A genuine stranded worker looks like this:
-
 GPS coordinates are consistent with their last known active delivery route
 Device sensor data (accelerometer, barometric pressure) reflects physical stillness or erratic movement matching weather disruption
 Network signal quality is degraded — consistent with a bad-weather environment
@@ -15,7 +14,6 @@ Their claim history shows a low frequency of weather-triggered payouts
 Their location is corroborated by at least 2 independent data sources (cell tower triangulation + weather API + delivery platform last-ping)
 
 A GPS spoofer looks like this:
-
 GPS coordinates are suspiciously perfect — no signal drift, no jitter, no micro-variance (real GPS in bad weather is noisy)
 Device is simultaneously connected to stable home Wi-Fi while claiming to be in a flood zone
 Accelerometer shows no movement for extended periods with zero contextual activity
@@ -58,7 +56,7 @@ A network drop in a disaster zone is not evidence of fraud. Our system is explic
 We also implement a "First-time grace threshold" — first-time flagged workers with a clean history receive an automatic 24-hour hold instead of a block, giving them time to respond without penalty.
 
 
-🧪 Attack Simulation: How Our System Stops a Fraud Ring
+🧪4. Attack Simulation: How Our System Stops a Fraud Ring
 
 Scenario:
 A fraud ring of 50 users simultaneously claims payout in a flood zone.
@@ -76,13 +74,14 @@ Step 4: Cluster detection → high synchronization within 10 minutes 🚨
 Step 5: FCS drops below threshold → triggers Coordinated Fraud Alert
 
 Outcome:
-
 Payouts frozen for entire cluster
 Flag sent to human audit
 Genuine outliers (if any) separated via behavioral history
 
- Result: Fraud ring neutralized without harming legitimate users
+ Result:
+ Fraud ring neutralized without harming legitimate users
 
+5.Why existing systems fail?
  Why Traditional Systems Fail
     ->Rely only on GPS → easily spoofed
     ->No cross-signal validation
@@ -110,16 +109,17 @@ Privacy & Ethical Considerations:
         Transparent decision-making with explainable outputs
 
 🏗️ Architecture Summary
+
 Claim Submitted
       │
       ▼
 ┌─────────────────────────┐
-│  Multi-Signal Ingestion  │  ← GPS + Sensors + Network + History + Weather API
+│  Multi-Signal Ingestion │    ← GPS + Sensors + Network + History + Weather API
 └────────────┬────────────┘
              │
              ▼
 ┌─────────────────────────┐
-│  Fraud Confidence Score  │  ← Isolation Forest + Rule Engine
+│  Fraud Confidence Score  │   ← Isolation Forest + Rule Engine
 │         (FCS)            │
 └────────────┬────────────┘
              │
