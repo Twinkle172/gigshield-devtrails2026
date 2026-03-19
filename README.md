@@ -139,14 +139,14 @@ Core Insight: Fraud is not a single anomaly — it is a pattern. We detect patte
 
 Bottom line: We don't just verify location. We verify reality. A bad actor can fake coordinates — they cannot simultaneously fake their accelerometer, their Wi-Fi, their signal quality, their movement history, and their cluster behavior. Our system catches what GPS alone never could.
 
-6.Protecting Honest Workers (Precision Filtering)
+6.  Protecting Honest Workers (Precision Filtering)
 
 ~To ensure legitimate workers are not punished:
 Manual Review Queue: Instead of immediate bans, high-risk but ambiguous cases are flagged for human oversight or required to provide a "Proof of Presence" (e.g., a photo of the delivery location).
 
 ~Graceful Degradation: Instead of account suspension, suspected accounts may face temporary payout holds while verification is pending, allowing them to continue working if they are legitimate.
 
-7. Deep Dive: GPS Emulator & Spoofing Signatures
+7.  Deep Dive: GPS Emulator & Spoofing Signatures
 A. Environment-Level Signatures
 Before looking at coordinates, we analyze the OS environment for "footprints" left by spoofing tools:
 ~Developer Mode & Mock Provider Flags: Logic checks if the global ALLOW_MOCK_LOCATION setting is active. On modern Android (API 18+), every location object carries an isFromMockProvider flag.
@@ -168,7 +168,7 @@ The "Stationary" Movement: If GPS coordinates show a delivery partner moving at 
 
 ~Perfectly Straight Routes: Human drivers never travel in perfectly straight lines; they navigate lane changes, curves, and signal drift. Routes that match a geometric "snap-to-road" perfectly are a signature of automated route simulation.
 
-7. Circuit Breakers: Real-Time Liquidity Protection
+8. Circuit Breakers: Real-Time Liquidity Protection
 To prevent the "Market Crash" from draining the liquidity pool, we implement a multi-tiered Automated Circuit Breaker (ACB) system. This logic acts as an emergency shut-off valve when coordinated fraud signatures are detected.
 
 A. Tier 1: Velocity-Based Throttling (The "Speed Bump")
