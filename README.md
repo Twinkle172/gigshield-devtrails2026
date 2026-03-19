@@ -27,6 +27,103 @@ A coordinated syndicate of 500 delivery workers exploited **GPS spoofing** to tr
 - False positives can harm genuine workers  
 
 ---
+---
+
+## 👤 Target Users & System Context
+
+### 🎯 User Segments
+- 🚚 Delivery Workers → Need fast, fair payouts during real disruptions  
+- 🕵️ Fraud Actors → Attempt GPS spoofing & coordinated exploitation  
+- 🏢 Platform Operators → Need accurate fraud detection with minimal false positives  
+
+---
+
+## 🤖 AI/ML Decision Pipeline
+
+```mermaid
+flowchart LR
+A[Multi Signal Input] --> B[Feature Extraction]
+B --> C[Isolation Forest Model]
+C --> D[Rule Engine Validation]
+D --> E[Fraud Confidence Score]
+E --> F{Decision}
+F -->|Low Risk| G[Approve]
+F -->|Medium Risk| H[Review]
+F -->|High Risk| I[Block]
+```
+⚙️ Pipeline Explanation
+
+->Multi-source data is ingested (GPS, sensors, network, weather)
+->ML model detects anomalies
+->Rule engine validates deterministic fraud signals
+->Final decision generated using FCS (Fraud Confidence Score)
+
+## ⚙️ System Implementation Flow
+
+```mermaid
+flowchart TD
+
+A[Data Sources] --> B[API Ingestion Layer]
+
+B --> C[Preprocessing and Feature Extraction]
+
+C --> D[ML Model Processing]
+C --> E[Rule Engine Validation]
+
+D --> F[Fraud Scoring Service]
+E --> F
+
+F --> G{Risk Evaluation}
+
+G -->|Low Risk| H[Approve Request]
+G -->|Medium Risk| I[Send for Review]
+G -->|High Risk| J[Block Request]
+
+I --> K[Human Audit Dashboard]
+J --> K
+
+K --> L[Final Decision Update]
+H --> L
+```
+
+## Market Crah Handling:-
+  ## 💣 Market Crash Protection System
+
+```mermaid
+flowchart TD
+
+A[Incoming Claims Stream] --> B[Monitor Payout Activity]
+
+B --> C[Anomaly Detection Engine]
+
+C --> D{Spike Detected}
+
+D -->|No| E[Normal Processing]
+
+D -->|Yes| F[Threshold Evaluation]
+
+F --> G{Above Critical Limit}
+
+G -->|No| H[Flag Suspicious Activity]
+
+G -->|Yes| I[Trigger Circuit Breaker]
+
+I --> J[Freeze Suspicious Clusters]
+
+J --> K[Restrict or Delay Payouts]
+
+K --> L[Initiate Verification Process]
+
+L --> M{Verification Passed}
+
+M -->|Yes| N[Release Payouts]
+
+M -->|No| O[Block and Escalate]
+
+H --> K
+E --> N
+```
+
 
 ## 🔍 Differentiation: Genuine vs Fraud
 
