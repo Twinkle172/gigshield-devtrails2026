@@ -39,7 +39,7 @@ A coordinated syndicate of 500 delivery workers exploited **GPS spoofing** to tr
 ---
 
 ## 🤖 AI/ML Decision Pipeline
-
+Chosen for unsupervised anomaly detection in sparse fraud scenarios.Isolation Forest is used due to its effectiveness in detecting anomalies in high-dimensional, unlabeled fraud scenarios.
 ```mermaid
 flowchart LR
 A[Multi Signal Input] --> B[Feature Extraction]
@@ -58,37 +58,11 @@ F -->|High Risk| I[Block]
 ->Rule engine validates deterministic fraud signals
 ->Final decision generated using FCS (Fraud Confidence Score)
 
-## ⚙️ System Implementation Flow
-
-```mermaid
-flowchart TD
-
-A[Data Sources] --> B[API Ingestion Layer]
-
-B --> C[Preprocessing and Feature Extraction]
-
-C --> D[ML Model Processing]
-C --> E[Rule Engine Validation]
-
-D --> F[Fraud Scoring Service]
-E --> F
-
-F --> G{Risk Evaluation}
-
-G -->|Low Risk| H[Approve Request]
-G -->|Medium Risk| I[Send for Review]
-G -->|High Risk| J[Block Request]
-
-I --> K[Human Audit Dashboard]
-J --> K
-
-K --> L[Final Decision Update]
-H --> L
-```
 
 ## Market Crah Handling:-
   ## 💣 Market Crash Protection System
-
+       The system dynamically prevents large-scale financial loss during coordinated fraud attacks:
+      
 ```mermaid
 flowchart TD
 
@@ -123,6 +97,15 @@ M -->|No| O[Block and Escalate]
 H --> K
 E --> N
 ```
+### 🚨 Market Crash Protection Logic
+
+- Continuously monitors payout activity for abnormal spikes  
+- Detects coordinated fraud using statistical thresholds (e.g., 3σ anomaly detection)  
+- Automatically triggers **circuit breakers** during high-risk events  
+- Freezes suspicious clusters to prevent liquidity drain  
+- Enforces verification before releasing payouts  
+
+👉 Ensures platform stability while protecting genuine users.
 
 
 ## 🔍 Differentiation: Genuine vs Fraud
@@ -172,6 +155,32 @@ E --> N
 - Liquidity drain patterns  
 
 ---
+## ⚙️ System Implementation Flow
+```mermaid
+flowchart TD
+
+A[Data Sources] --> B[API Ingestion Layer]
+
+B --> C[Preprocessing and Feature Extraction]
+
+C --> D[ML Model Processing]
+C --> E[Rule Engine Validation]
+
+D --> F[Fraud Scoring Service]
+E --> F
+
+F --> G{Risk Evaluation}
+
+G -->|Low Risk| H[Approve Request]
+G -->|Medium Risk| I[Send for Review]
+G -->|High Risk| J[Block Request]
+
+I --> K[Human Audit Dashboard]
+J --> K
+
+K --> L[Final Decision Update]
+H --> L
+```
 
 ## 📊 Multi-Signal Data Intelligence
 
@@ -282,40 +291,12 @@ E --> N
 
 ## 🏗️ System Architecture
 
-```mermaid
-flowchart TD
 
-A[Claim Submitted] --> B[Multi Signal Ingestion]
+## 🏗️ System Architecture (Visual)
 
-B --> B1[GPS Data]
-B --> B2[Device Sensors]
-B --> B3[Network Metadata]
-B --> B4[Weather API]
-B --> B5[User History]
+![Architecture Diagram](https://github.com/user-attachments/assets/8efd2831-8f35-46e6-84b0-397296df12c0)
 
-B1 --> C[Feature Extraction]
-B2 --> C
-B3 --> C
-B4 --> C
-B5 --> C
 
-C --> D[Fraud Confidence Score Engine]
-
-D --> D1[Isolation Forest Model]
-D --> D2[Rule Engine]
-
-D --> E{Cluster Detected}
-
-E -->|Yes| F[Fraud Ring Detection]
-E -->|No| G[Individual Risk Scoring]
-
-F --> H[Human Audit Queue]
-G --> I[Decision Engine]
-
-I --> J[Approve Review Block]
-H --> J
-
-```
 
 ## ⚙️ Scalability & Performance
 
@@ -406,3 +387,5 @@ G --> H[Proof of Life Verification]
 H --> I[Restore or Block Access]
 ```
 
+### Conclusion
+ A fraudster can fake location — but they cannot fake physics, behavior, and coordination simultaneously. Our system detects what GPS alone never could.
