@@ -93,11 +93,11 @@
                 return res.json();
             })
             .then(data => {
-                messageDiv.style.color = "#4CAF50"; // green for success
+                messageDiv.style.color = "#4CAF50"; 
                 messageDiv.innerText = data.message;
             })
             .catch(err => {
-                messageDiv.style.color = "#d9534f"; // red for errors
+                messageDiv.style.color = "#d9534f"; 
                 messageDiv.innerText = "Login failed: " + err.message;
             });
         }
