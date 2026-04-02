@@ -44,4 +44,30 @@ async def analyze(data: dict):
 @router.post("/claim")
 async def create_claim_api(data: dict):
     claim = create_claim(data)
-    return {"message": "Claim submitted", "id": str(claim.inserted_id)}
+    return {"message": "Claim submitted", "id": str(claim.inserted_id)
+    }
+    
+@router.post("/smart-claim")
+async def smart_claim(data: dict):
+    result = run_pipeline(data)
+
+    claim_data = {
+        "user_id": data.get("user_id"),
+        "amount": data.get("amount"),
+        "reason": data.get("reason"),
+        "fraud_score": result["fraud_score"]
+    }
+
+    if result["decision"] == "APPROVE":
+        claim_data["status"] = "APPROVED"
+    elif result["decision"] == "REVIEW":
+        claim_data["status"] = "UNDER_REVIEW"
+    else:
+        claim_data["status"] = "REJECTED"
+
+    create_claim(claim_data)
+
+    return {
+        "decision": result["decision"],
+        "fraud_score": result["fraud_score"]
+    }    
