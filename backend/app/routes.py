@@ -3,6 +3,7 @@ from .pipeline import run_pipeline
 from .auth import verify_token
 from app.services.trigger import check_rain_trigger, check_no_orders
 from app.services.weather import get_rainfall
+from .database import create_claim
 
 router = APIRouter()
 
@@ -39,3 +40,8 @@ async def analyze(data: dict):
         "rain_trigger": rain_trigger,
         "no_order_trigger": no_order_trigger
     }
+    
+@router.post("/claim")
+async def create_claim_api(data: dict):
+    claim = create_claim(data)
+    return {"message": "Claim submitted", "id": str(claim.inserted_id)}
