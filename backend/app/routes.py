@@ -4,6 +4,7 @@ from .auth import verify_token
 from app.services.trigger import check_rain_trigger, check_no_orders
 from app.services.weather import get_rainfall
 from .database import create_claim
+from .models import Claim
 
 router = APIRouter()
 
@@ -48,8 +49,8 @@ async def create_claim_api(data: dict):
     }
     
 @router.post("/smart-claim")
-async def smart_claim(data: dict):
-    result = run_pipeline(data)
+async def smart_claim(data: Claim):
+    result = run_pipeline(data.dict())
 
     claim_data = {
         "user_id": data.get("user_id"),
